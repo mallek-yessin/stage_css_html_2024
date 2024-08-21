@@ -1,0 +1,92 @@
+<head>
+<title>Missing Number</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		
+		    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
+</head>
+<body>
+<h1>Missing Number</h1>
+<h3>la liste est en serie</h3>
+
+<table>
+<tr>
+<th>les valeurs de liste </th>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<th>les indices de liste </th>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+<td>b</td>
+<td>c</td>
+</tr>
+</table>
+<p>ans = x^y^z^a^b^x^y^z^b^c^(c+1)     avec c+1=b</p>
+<p>donc ans =a</p>
+<p>c+1 est le "missing number"</p>
+<table>
+<tr>
+<th>les valeurs de liste </th>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<th>les indices de liste </th>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+<td>a</td>
+<td>b</td>
+</tr>
+</table>
+<p>ans = x^y^z^a^b^x^y^z^a^b^(b+1)     </p>
+<p>donc ans =b+1</p>
+<pre>
+<code>
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for i in range(1, n + 1):
+            ans ^= i
+        for num in nums:
+            ans ^= num
+        return ans
+</code>
+</pre>
+<h4>autre solution</h4>
+
+
+<pre>
+<code>
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        s=set()
+        for i in  (nums):
+            s.add(i)
+        
+        for i in range (len(nums)):
+            if i not in s:
+                return i
+        return len(nums)
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>        
+
+</body>

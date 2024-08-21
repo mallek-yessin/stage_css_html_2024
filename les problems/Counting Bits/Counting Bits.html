@@ -1,0 +1,167 @@
+<head>
+<title>Counting Bits</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+				    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
+
+</head>
+
+<body>
+<h1>Counting Bits</h1>
+<p>time complexity <B>O(n log(n))</B></p>
+<p>cette solution est plus simple que les autres mais sa time complexity est plus eleve</p>
+<pre>
+<code>
+    def countBits(self, n):
+        """
+        :type n: int
+        :rtype: List[int]
+        """
+        l=[]
+        for i in range (n+1):
+            a=0
+            x=i
+            while x>0:
+                if x%2==1:
+                    a=a+1
+                x=x>>1
+            l.append(a)
+        return l
+</code>
+</pre>
+<img src="img/15 bits.jpg" alt="aa">
+<img src="img/32 bits.jpg" alt="aa">
+<p>on remarque qu'il y a une liste de bits est 0   1  1 2   1 2 2 3   1 2 2 3 2 3 3 4   1 2 2 3 2 3 3 4 2 3 3 4 3 4 4 5</p>
+<p>on remarque pour trouver le nombres de bits on fait le nombre - x  avec x est sous forme 2**k et x est le nombre inferieur et plus proche</p> 
+<p>cette solution est plus rapide que la dernier mais il y a autres solutions plus simple</p>
+<p>time complexity <B>O(n)</B></p>
+<pre>
+<code>
+    def countBits(self, n):
+        """
+        :type n: int
+        :rtype: List[int]
+        """
+        l=[0]*(n+1)
+        i=0
+        while 2**i<=n :
+            l[2**i]=1
+            i=i+1
+        last_power=0
+        for i in range (1,n+1):
+            if l[i]==1:
+                last_power=i
+            else:
+                l[i]=l[i-last_power]+1
+        return l
+</code>
+</pre>
+<table>
+
+
+
+
+<tr>
+<td>0</td>
+<td>1</td>
+<td style="color:Tomato;">1</td>
+<td>2</td>
+<td style="color:Tomato;">1</td>
+<td style="color:blue;">2</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td style="color:blue;">2</td>
+<td style="color:yellow;">3</td>
+<td style="color:purple;">2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td style="color:yellow;">4</td>
+<td>2</td>
+<td style="color:purple;">3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td style="color:Tomato;">2</td>
+<td>3</td>
+<td style="color:Tomato;">4</td>
+<td style="color:blue;">5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td style="color:blue;">10</td>
+<td style="color:yellow;">11</td>
+<td style="color:purple;">12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+<td style="color:yellow;">23</td>
+<td>24</td>
+<td style="color:purple;">25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+<td>31</td>
+</tr>
+</table>
+<p>on peut remarquer que les nombres de meme couleur sont multiple par 2 si pair sont multiple par 2 puis plus 1 si impair </p>
+<p>les nombres paires a binaire sont les meme et les les nombres impaires a binaire sont les nombres binaire +1</p>
+<p>time complexity <B>O(n)</B></p>
+
+<pre>
+<code>
+
+    def countBits(self, n):
+        """
+        :type n: int
+        :rtype: List[int]
+        """
+        l=[0]*(n+1)
+        i=0
+        while 2**i<=n :
+            l[2**i]=1
+            i=i+1
+        for i in range (n+1):
+            l[i]=l[i//2]
+            if i%2==1:
+                l[i]=l[i]+1
+                #or l[i]=l[i>>1]+(i&1)
+                #or l[i]=l[i//2]+(i&1)
+                
+        return l
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>        
+
+</body>

@@ -1,0 +1,45 @@
+<head>
+<title>Group Anagrams</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		
+
+</head>
+
+<body>
+<h1>Group Anagrams</h1>
+<p>on utilise 3 lists l compose par les chaines trier 
+q compose par les chaines trier qui sont dans w
+w compose par les listes des chaines qui sont de meme alphabet</p>
+<pre>
+<code>
+	  def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        l=[]
+        q=[]
+        w=[]
+        for i in (strs):
+            chaine_triee = ''.join(sorted(i))
+            l.append(chaine_triee)
+        for i in range (len(l)):
+            if l[i] not in q:
+                q.append(l[i])
+                w.append([strs[i]])
+            else:
+                x=0
+                print(q,l[0])
+                for j in range(len(q)):
+                    if q[j]==l[i]:
+                        break
+                w[j].append(strs[i])
+        return w
+
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>        
+
+</body>

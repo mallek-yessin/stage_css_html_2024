@@ -1,0 +1,100 @@
+<head>
+<title>two summary</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<h1>two summary</h1>
+ <a href="https://codeforces.com/problemset/gymProblem/102961/G"> le problem two sum </a>
+<p>https://codeforces.com/problemset/gymProblem/102961/G</p>
+<p>time complexity <B>O(nlog(n))</B></p>
+<pre>
+<code>
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+    # Initialiser une liste vide l pour stocker les valeurs de nums.
+    l = []
+    for i in nums:
+        # Ajouter chaque élément de nums à la liste l.
+        l.append(i)
+        
+    # Trier la liste nums dans l'ordre croissant.
+    nums.sort()
+    
+    # Initialiser deux compteurs : i à l'indice 0 et j à l'indice de la dernière valeur.
+    j = len(nums) - 1
+    i = 0
+    
+    # Boucle jusqu'à ce que i soit inférieur à la longueur de nums.
+    while i < len(nums):
+        # Si la somme des valeurs aux indices i et j de nums est égale à target.
+        if nums[i] + nums[j] == target:
+            # Assigner les valeurs correspondantes de nums à x et y.
+            x = nums[i]
+            y = nums[j]
+            # Sortir de la boucle car nous avons trouvé les indices recherchés.
+            break
+        # Si la somme des valeurs aux indices i et j de nums est supérieure à target.
+        elif nums[i] + nums[j] > target:
+            # Décrémenter j pour essayer une valeur plus petite.
+            j = j - 1
+        else:
+            # Incrémenter i pour essayer une valeur plus grande.
+            i = i + 1
+    
+    # Initialiser une liste vide l1 pour stocker les indices correspondant aux valeurs x et y.
+    l1 = []
+    
+    # Parcourir la liste l pour trouver l'indice correspondant à la valeur x.
+    for i in range(len(l)):
+        if x == l[i]:
+            # Ajouter l'indice à la liste l1.
+            l1.append(i)
+            # Sortir de la boucle car nous avons trouvé l'indice correspondant à x.
+            break
+    
+    # Parcourir la liste l dans l'ordre inverse pour trouver l'indice correspondant à la valeur y.
+    for i in range(len(l) - 1, -1, -1):
+        if y == l[i]:
+            # Ajouter l'indice à la liste l1.
+            l1.append(i)
+            # Sortir de la boucle car nous avons trouvé l'indice correspondant à y.
+            break
+    
+    # Retourner la liste des indices correspondant aux valeurs x et y.
+    return l1
+</code>
+</pre>
+<p>time complexity <B>O(n^2)</B></p>
+<pre>
+<code>
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+    # Parcourir la liste nums en utilisant une boucle for sur les indices i.
+    for i in range(len(nums)):
+        # Parcourir la liste nums en utilisant une autre boucle for sur les indices j,
+        # en commençant à l'indice suivant de i.
+        for j in range(i + 1, len(nums)):
+            # Vérifier si la somme de l'élément à l'indice j et l'élément à l'indice i
+            # est égale à la cible (target).
+            if nums[j] == target - nums[i]:
+                # Si c'est le cas, retourner les indices i et j.
+                return [i, j]
+
+					</code>
+</pre>
+<p>time complexity <B>O(n)</B></p>
+<pre>
+<code>
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for i in range(len(nums)):
+            hashmap[nums[i]] = i
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in hashmap and hashmap[complement] != i:
+                return [i, hashmap[complement]]
+									</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>

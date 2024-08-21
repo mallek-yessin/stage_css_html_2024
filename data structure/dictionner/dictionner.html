@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>dictionner </title>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../../nav.css">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="../../complexity/complexity.html">complexite</a>
+        <a href="../liste/liste.html">liste</a>
+        <a href="../set/set.html">set</a>
+        <a class="active">dictionner</a>
+        <a href="../tuple/tuple.html">tuple</a>
+        <a href="../stack/stack.html">stack</a>
+        <a href="../queue/queue.html">queue</a>
+        <a href="../str/str.html">str</a>
+        <a href="../diff des complexite/diff des complexite.html">difference entre eux</a>
+        <a href="../../mot cle/motcle.html">mots cle</a>
+        <a href="../../utils/utils.html">fonctions utiles</a>
+      </div>
+
+
+    <h1>dictionner</h1>
+    <h3>Il y a des fonctions près définie sont:</h3>
+    <p> keys(), values(), items(), get(), update(), pop(), popitem()
+    </p>
+    <h2>a) keys() :</h2>
+    <p> Retourne une vue sur les clés du dictionnaire</p>
+
+    <pre>
+        <code>
+            my_dict = {'a': 1, 'b': 2, 'c': 3}
+            keys = my_dict.keys()
+            print(keys)  # dict_keys(['a', 'b', 'c'])
+            
+
+        </code>
+   </pre>
+
+
+
+    <h2>b) values() </h2>
+    <p>Retourne une vue sur les valeurs du dictionnaire.</p>
+
+    <pre>
+           <code>
+            my_dict = {'a': 1, 'b': 2, 'c': 3}
+            values = my_dict.values()
+            print(values)  # dict_values([1, 2, 3])
+            
+            
+   
+           </code>
+      </pre>
+
+
+
+
+
+
+    <h2>c) items() </h2>
+    <p>Retourne une vue sur les paires clé-valeur du dictionnaire.</p>
+
+    <pre>
+              <code>
+                my_dict = {'a': 1, 'b': 2, 'c': 3}
+                items = my_dict.items()
+                print(items)  # dict_items([('a', 1), ('b', 2), ('c', 3)])
+                
+                
+      
+              </code>
+         </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>d) get(key[, default]) </h2>
+    <p>Retourne la valeur associée à la clé spécifiée, ou la valeur par défaut si la clé n'existe pas.</p>
+
+    <pre>
+                 <code>
+                    my_dict = {'a': 1, 'b': 2, 'c': 3}
+                    value = my_dict.get('b', 0)  # 2
+                    
+                    
+                     
+         
+                 </code>
+            </pre>
+
+
+
+
+
+    <h2>e) update() </h2>
+    <p>Met à jour le dictionnaire avec les paires clé-valeur d'un autre dictionnaire ou d'une séquence de paires
+        clé-valeur.</p>
+
+    <pre>
+                    <code>
+                        my_dict = {'a': 1, 'b': 2}
+                        my_dict.update({'b': 3, 'c': 4})
+                        print(my_dict)  # {'a': 1, 'b': 3, 'c': 4}
+                        
+                        
+                    </code>
+               </pre>
+
+
+
+
+    <h2>f)pop(key[, default]) </h2>
+    <p>Supprime et retourne la valeur associée à la clé spécifiée, ou la valeur par défaut si la clé n'existe pas.</p>
+
+    <pre>
+                       <code>
+                        my_dict = {'a': 1, 'b': 2, 'c': 3}
+                        value = my_dict.pop('b')  # 2
+                        
+                        
+                          
+                           
+               
+                       </code>
+                  </pre>
+
+
+
+
+
+    <h2>g) popitem() </h2>
+    <p> Supprime et retourne une paire clé-valeur arbitraire du dictionnaire.</p>
+
+    <pre>
+                          <code>
+                            my_dict = {'a': 1, 'b': 2, 'c': 3}
+                            key, value = my_dict.popitem()
+                            
+                           
+                             
+                              
+                  
+                          </code>
+                     </pre>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

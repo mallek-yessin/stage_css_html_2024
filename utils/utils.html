@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>utils</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"
+    />
+    <link rel="stylesheet" href="../nav.css" />
+    <link rel="stylesheet" href="../utils/utils.css" />
+  </head>
+
+  <body>
+    <div class="topnav">
+      <a href="../index.html">Home</a>
+      <a href="../complexity/complexity.html">complexite</a>
+      <a href="../data structure/liste/liste.html">liste</a>
+      <a href="../data structure/set/set.html">set</a>
+      <a href="../data structure/dictionner/dictionner.html">dictionner</a>
+      <a href="../data structure/tuple/tuple.html">tuple</a>
+      <a href="../data structure/stack/stack.html">stack</a>
+      <a href="../data structure/queue/queue.html">queue</a>
+      <a href="../data structure/str/str.html">str</a>
+      <a href="../data structure/diff des complexite/diff des complexite.html"
+        >difference entre eux</a
+      >
+      <a href="../mot cle/motcle.html">mots cle</a>
+      <a class="active">fonctions utiles</a>
+    </div>
+
+    <ul>
+      <li><a href="#nombre premier">nombre premier</a></li>
+      <p>avec une complexity O(sqrt(n))</p>
+      <li><a href="#ppcm">ppcm</a></li>
+      <p>avec une complexity O(1)</p>
+      <li><a href="#pgcd">pgcd</a></li>
+      <p>avec une complexity O(1)</p>
+      <li><a href="#sort">sort algorithm</a>
+      <ul><li>merge sort</li>
+      <p>avec une complexity O(n log(n))</p>
+      </ul>
+      </li>
+    </ul>
+
+    
+<div style="background-color: aquamarine;">
+
+  <h3>nombre premier</h3>
+  <pre id="nombre premier">
+    <code>
+      
+      
+      def est_premier(n):
+      if n <= 1:
+      return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+        for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+        return False
+        return True
+        
+      </code>
+    </pre>
+  </div>
+
+    
+
+    <div style="background-color: blueviolet;">
+    <h3>ppcm</h3>
+
+    <pre id="ppcm">
+    <code>
+    import math
+
+    def ppcm(a, b):
+        return abs(a * b) // math.gcd(a, b)
+
+
+
+    </code>
+</pre>
+</div>
+    
+
+    <div style="background-color: red;">
+    <h3>pgcd</h3>
+
+    <pre id="pgcd">
+    <code>
+        import math
+
+        def pgcd(a, b):
+            return math.gcd(a, b)
+        
+
+    </code>
+</pre>
+</div>
+    
+
+    <div style="background-color: yellow;">
+    <h3 id="fibonacci">fibonacci</h3>
+
+    <div class="row">
+      <div>
+        <div style="text-align: center">brute force O(2^n)</div>
+        <pre>
+    <code>
+    def fibonacci_recursif(n):
+      if n <= 0:
+          return 0
+      elif n == 1:
+          return 1
+      else:
+          return fibonacci_recursif(n-1) + fibonacci_recursif(n-2)
+    </code>
+</pre>
+      </div>
+
+
+      <div>
+        <div style="text-align: center">memoization</div>
+        <pre>
+    <code>
+    def Fibonacci_memoization(n, memo):
+      global numCalls
+      numCalls += 1
+      print 'fib1 called with', n
+      if not n in memo:
+          memo[n] = fastFib(n-1, memo) + fastFib(n-2, memo)
+          return memo[n]
+
+    def fib1(n):
+          memo = {0:1, 1:1}
+          return fastFib(n, memo)
+    </code>
+</pre>
+      </div>
+
+
+
+      <div>
+        <div style="text-align: center">Dynamic Programming (DP) O(n)</div>
+
+        <pre>
+        <code>
+        def fibonacci_iteratif(n):
+          if n <= 0:
+              return 0
+          elif n == 1:
+              return 1
+          a, b = 0, 1
+          for _ in range(2, n + 1):
+              a, b = b, a + b
+          return b
+        </code>
+ 
+    </pre>
+      </div>
+    </div>
+  </div>
+    
+
+    <div style="background-color: aquamarine;">
+    <h3 id="sort">Sort</h3>
+
+    <div>
+      <h4>mergesort</h4>
+
+      <pre>
+        <code>
+      def mergeSort(arr):
+      if len(arr) <= 1:
+          return arr
+  
+      mid = len(arr) // 2
+      leftHalf = arr[:mid]
+      rightHalf = arr[mid:]
+  
+      sortedLeft = mergeSort(leftHalf)
+      sortedRight = mergeSort(rightHalf)
+  
+      return merge(sortedLeft, sortedRight)
+  
+  def merge(left, right):
+      result = []
+      i = j = 0
+  
+      while i < len(left) and j < len(right):
+          if left[i] < right[j]:
+              result.append(left[i])
+              i += 1
+          else:
+              result.append(right[j])
+              j += 1
+  
+      result.extend(left[i:])
+      result.extend(right[j:])
+  
+      return result
+  
+  unsortedArr = [3, 7, 6, -10, 15, 23.5, 55, -13]
+  sortedArr = mergeSort(unsortedArr)
+  print("Sorted array:", sortedArr)
+</code>
+</pre>
+    </div>
+
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
+

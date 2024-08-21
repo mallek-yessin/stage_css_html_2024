@@ -1,0 +1,26 @@
+
+ <head>
+<title> Contains Duplicate</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<h1>Contains Duplicate</h1>
+<p>https://codeforces.com/problemset/gymProblem/102961/G</p>
+<p>time complexity <B>O(n)</B></p>
+<pre>
+<code>
+     def containsDuplicate(self, nums: List[int]) -> bool:
+        d={}
+        for i in (nums):
+            if i in d:
+                return True
+            else:
+                d[i]=1
+        return False
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>

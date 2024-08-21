@@ -1,0 +1,127 @@
+<head>
+<title>Coin Change</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<h1>Coin Change</h1>
+<p>https://codeforces.com/problemset/gymProblem/102961/G</p>
+<p>time complexity <B>O(coins*amount)</B></p>
+<pre>
+<code>
+def coinChange(self, coins, amount):
+    # Vérification si la liste coins contient une seule pièce
+    if len(coins) == 1:
+        # Vérification si le montant est divisible par la seule pièce disponible
+        if amount % coins[0] == 0:
+            # Si c'est le cas, retourne le nombre de fois que le montant est divisible par la pièce
+            return amount // coins[0]
+        else:
+            # Sinon, il n'est pas possible d'atteindre le montant avec une seule pièce, donc retourne -1
+            return -1
+
+    # Initialisation d'une liste l avec des valeurs amount + 1
+    l = [amount + 1] * (amount + 1)
+    # Le nombre minimum de pièces nécessaires pour atteindre un montant de 0 est 0
+    l[0] = 0
+
+    # Parcours de chaque pièce de monnaie dans la liste coins
+    for i in (coins):
+        # Parcours des montants de i à amount
+        for j in range(i, amount + 1):
+            # Met à jour l[j] avec le minimum entre sa valeur actuelle et l[j - i] + 1
+            l[j] = min(l[j - i] + 1, l[j])
+
+    # Vérifie si le montant est atteignable avec les pièces de monnaie disponibles
+    if l[amount] <= amount:
+        # Si oui, retourne le nombre minimum de pièces nécessaires pour atteindre le montant
+        return l[amount]
+    else:
+        # Sinon, il n'est pas possible d'atteindre le montant avec les pièces de monnaie disponibles, donc retourne -1
+        return -1
+
+</code>
+</pre>
+
+<p>il y a autres codes qui ne sont pas vrais mais ces idees vient a l'esprit</p>
+<pre>
+<code>
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        coins.sort()
+        if amount==0:
+            return 0
+        s=0
+        a=0
+        i=len(coins)-1
+        while i>=0 and s!=amount:
+            if coins[i]+s<=amount:
+                s=s+coins[i]
+                a=a+1
+            else:
+                i=i-1
+        if s==amount:
+            return a
+        else:
+            return -1
+
+</code>
+</pre>
+<p>dans ce code il y a un  problem</p>
+<p>Si amount=22</p>
+<p>Coins=[6,7,10]</p>
+<p>Le programme affiche-1</p>
+<p>Mais la réponse est 3</p>
+<p>Car 10 inferieur a amount donc s=20</p>
+<p>Après il n a pas une cas si on prend une coin 10</p>
+<p>Mais 22=10 +6+6</p>
+
+
+
+<pre>
+<code>
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        if len (coins)==1:
+            if amount%coins[0]==0:
+                return amount//coins[0]
+            else:
+                return -1
+        l=[amount+1]*(amount +1)
+        l[0]=0
+        for i in (coins):
+            for j in range (i,amount +1):
+                if j% i==0:
+                    l[j]=min(j//i,l[j])
+                else: 
+                    l[j]=min(l[j-i]+1,l[j])
+        if l[amount]>=0:
+            return l[amount]  
+        else :
+            return -1
+</code>
+</pre>
+
+
+
+
+<p>Si amount=18  en general 5*3+3*k</p>
+<p>Coins=[5,3]</p>
+<p>Le programme affiche 6</p>
+<p>Mais la reponse est 3</p>
+<p>Car dans if j%i  ou j=18 i=5 il ne fait rien</p> 
+<p>Et dans le dernier  j=18 i=3 il mets dans le dernier case la valeur j//i</p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+Pour le premier 
+
+
+Pour le deuxième 
+

@@ -1,0 +1,85 @@
+
+ <head>
+<title> Best Time to Buy and Sell Stock</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<h1>Best Time to Buy and Sell Stock</h1>
+<a href="https://codeforces.com/problemset/gymProblem/102961/G"> le problem Best Time to Buy and Sell Stock </a>
+<p>https://codeforces.com/problemset/problem/865/D</p>
+<p>time complexity <B>O(n)</B></p>
+<pre>
+<code>
+def maxProfit(self, prices: List[int]) -> int:
+    # Initialiser les variables x, result, minimum, maximum à des valeurs par défaut.
+    x = -1  # Différence entre le prix maximum et le prix minimum actuels.
+    result = -1  # Résultat final, le profit maximal.
+    minimum = -1  # Prix minimum rencontré jusqu'à présent.
+    maximum = -1  # Prix maximum rencontré jusqu'à présent.
+    n = len(prices)  # Nombre de prix dans la liste.
+    
+    # Vérifier si la liste de prix contient au moins deux éléments.
+    if n > 1:
+        # Si la première paire de prix montre un profit.
+        if prices[0] - prices[1] < 0:
+            minimum = prices[0]  # Premier prix est le prix minimum.
+            maximum = prices[1]  # Deuxième prix est le prix maximum.
+            x = maximum - minimum  # Calculer la différence.
+        else:
+            minimum = prices[1]  # Si non, le minimum est le deuxième prix.
+
+        # Mettre à jour le résultat si le profit actuel est plus grand.
+        if maximum != -1:
+            result = max(x, result)
+
+        # Parcourir le reste des prix.
+        for i in range(2, n):
+            # Si le prix actuel est plus bas que le prix minimum précédent.
+            if minimum - prices[i] > 0:
+                minimum = prices[i]  # Mettre à jour le prix minimum.
+                maximum = -1  # Réinitialiser le prix maximum.
+            # Si le prix actuel est plus élevé que le prix maximum précédent.
+            if maximum - prices[i] < 0:
+                maximum = prices[i]  # Mettre à jour le prix maximum.
+                x = maximum - minimum  # Calculer la différence.
+            # Mettre à jour le résultat si le profit actuel est plus grand.
+            if maximum != -1:
+                result = max(x, result)
+
+    # Si aucun profit n'est réalisé, retourner 0, sinon retourner le profit maximal.
+    if result == -1:
+        return 0
+    else:
+        return result
+</code>
+</pre>
+<p>time complexity <B>O(n)</B></p>
+<pre>
+<code>
+def maxProfit(self, prices: List[int]) -> int:
+    # Initialiser les variables high et low au premier prix de la liste.
+    high = prices[0]  # Le prix le plus élevé rencontré jusqu'à présent.
+    low = prices[0]   # Le prix le plus bas rencontré jusqu'à présent.
+    maxProfit = 0     # Le profit maximal réalisé jusqu'à présent.
+
+    # Parcourir les prix de la deuxième à la dernière.
+    for price in prices[1:]:
+        # Si le prix actuel est supérieur au prix le plus élevé rencontré jusqu'à présent.
+        if price > high:
+            high = price  # Mettre à jour le prix le plus élevé.
+            maxProfit = max(maxProfit, high - low)  # Mettre à jour le profit maximal.
+        
+        # Si le prix actuel est inférieur au prix le plus bas rencontré jusqu'à présent.
+        if price < low:
+            low = price   # Mettre à jour le prix le plus bas.
+            high = low   # Réinitialiser le prix le plus élevé au prix le plus bas.
+
+    # Retourner le profit maximal.
+    return maxProfit
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>

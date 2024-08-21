@@ -1,0 +1,42 @@
+
+<head>
+<title>Longest Increasing Subsequence</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<h1>Longest Increasing Subsequence</h1>
+<p>https://codeforces.com/problemset/gymProblem/102961/G</p>
+<p>time complexity <B>O(n^2)</B></p>
+<pre>
+<code>
+def lengthOfLIS(self, nums):
+    # Création d'une liste l avec des valeurs initiales de 1, une pour chaque élément de nums
+    l = [1] * len(nums)
+
+    # Parcours des éléments de nums à partir de l'indice 1 jusqu'à la fin
+    for i in range(1, len(nums)):
+        # Parcours des éléments de nums jusqu'à l'indice i
+        for j in range(0, i):
+            # Vérification si l'élément à l'indice i est plus grand que l'élément à l'indice j
+            # et si l'élément à l'indice i forme une sous-séquence croissante plus longue que celle
+            # formée par l'élément à l'indice j
+            if nums[i] > nums[j] and l[i] < l[j] + 1:
+                # Si oui, met à jour l[i] avec l[j] + 1, car cela signifie qu'on peut prolonger la sous-séquence
+                l[i] = l[j] + 1
+
+    # Initialisation d'une variable ma à 0 qui stockera la longueur maximale de la sous-séquence croissante
+    ma = 0
+    # Parcours des éléments de l
+    for i in range(len(nums)):
+        # Mise à jour de ma avec la valeur maximale entre ma et l[i]
+        ma = max(ma, l[i])
+
+    # Retourne la longueur maximale de la sous-séquence croissante
+    return ma
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>

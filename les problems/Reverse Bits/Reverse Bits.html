@@ -1,0 +1,27 @@
+<head>
+<title>Reverse Bits</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		
+
+</head>
+
+<body>
+<h1>Reverse Bits</h1>
+<pre>
+<code>
+    def reverseBits(self, n):
+        x=0
+        a=31
+        for i in range(32):
+            if n%2==1:
+                x=x+2**a
+            n=n>>1
+            a=a-1
+        return x
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>        
+
+</body>

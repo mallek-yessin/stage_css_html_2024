@@ -1,0 +1,54 @@
+<head>
+<title>Number of 1 Bits</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		
+
+</head>
+
+<body>
+<h1>Number of 1 Bits</h1>
+<h3>solution 1</h3>
+<pre>
+<code>
+        mask = 0xffffffff
+        # works both as while loop and single value check 
+        while (b & mask) > 0:
+            
+                carry = ( a & b ) << 1
+                a = (a ^ b) 
+                b = carry
+        
+            # handles overflow
+        return (a & mask) if b > 0 else a
+</code>
+</pre>
+<h3>solution 2</h3>
+<pre>
+<code>
+		mask = 0xFFFFFFFF
+
+        while b:
+            w = (a ^ b) & mask
+            q = ((a & b) << 1) & mask
+            a = w
+            b = q
+        if a <= 0x7FFFFFFF:
+            return a
+
+        else:
+            return ~(a ^ mask)
+</code>
+</pre>
+
+<h3>il y a des quetion</h3>
+<p><B>1)</B>c'est quoi le mask</p>
+<p><B>2)</B>pourquoi on utilisent mask</p>
+<p><B>1)</B>  le mask est un nombre exadecimal ffffffff qui egale en binaire 32 * 1(11...11)</p>
+<p><B>2)</B>  1 aux des utilisation du mask est d'avoir est ce que le nombre binaire est positive ou negative </p>
+<p>tous les nombres negatives sont superieur aux mask </p>
+<p>tous les nombres positives sont inferieur aux mask </p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body>

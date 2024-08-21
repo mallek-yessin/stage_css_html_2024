@@ -1,0 +1,60 @@
+<head>
+<title>Product of Array Except Self</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<h1>Product of Array Except Self</h1>
+<p>https://codeforces.com/problemset/gymProblem/102961/G</p>
+<p>time complexity <B>O(n)</B></p>
+<pre>
+<code>
+def productExceptSelf(self, nums: List[int]) -> List[int]:
+    # Initialiser une liste vide pour stocker les résultats.
+    l = []
+    # Vérifier si zéro est présent dans la liste nums.
+    a = 0 in nums
+    # Initialiser une variable pour le produit total.
+    s = 1
+    # Initialiser un drapeau pour suivre si un zéro a été rencontré.
+    t = False
+    
+    # Calculer le produit de tous les éléments de la liste nums, sauf zéro.
+    for i in nums:
+        # Si l'élément est non nul ou si un zéro a déjà été rencontré.
+        if i != 0 or t:
+            s = s * i
+        else:
+            # Sinon, marquer qu'un zéro a été rencontré.
+            t = True
+    
+    # Si aucun zéro n'est présent dans la liste nums.
+    if not a:
+        # Parcourir la liste nums.
+        for i in range(len(nums)):
+            # Si l'élément n'est pas zéro, calculer le produit total divisé par l'élément.
+            if nums[i] != 0:
+                l.append(s // nums[i])
+            else:
+                # Si l'élément est zéro, ajouter le produit total à la liste résultante.
+                l.append(s)
+        # Retourner la liste de produits.
+        return l
+    else:
+        # Si zéro est présent dans la liste nums.
+        # Parcourir la liste nums.
+        for i in range(len(nums)):
+            # Si l'élément n'est pas zéro, ajouter zéro à la liste résultante.
+            if nums[i] != 0:
+                l.append(0)
+            else:
+                # Si l'élément est zéro, ajouter le produit total à la liste résultante.
+                l.append(s)
+        # Retourner la liste de produits.
+        return l
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>

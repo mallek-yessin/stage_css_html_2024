@@ -1,0 +1,73 @@
+<head>
+<title>Find Minimum in Rotated Sorted Array</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<h1>Find Minimum in Rotated Sorted Array</h1>
+<p>https://codeforces.com/problemset/gymProblem/102961/G</p>
+<p>time complexity <B>O(nlog(n))</B></p>
+<pre>
+<code>
+def findMin(self, nums: List[int]) -> int:
+    # Largeur de la subdivision initiale.
+    width = 1
+    # Taille de la liste nums.
+    n = len(nums)
+    
+    # Tant que la largeur est inférieure à la longueur de la liste nums.
+    while width < n:
+        # Pointeur de gauche initialisé à 0.
+        l = 0
+        # Tant que le pointeur de gauche est inférieur à la longueur de la liste nums.
+        while l < n:
+            # Détermination du milieu et de la fin de la sous-liste.
+            mid = min(l + width, n)
+            r = min(l + 2 * width, n)
+            
+            # Extraction de la sous-liste de la liste nums.
+            l_half = nums[l:mid]
+            r_half = nums[mid:r]
+            
+            # Initialisation des indices pour fusionner les deux moitiés.
+            i = 0
+            j = 0
+            k = l
+            
+            # Fusion des deux moitiés triées.
+            while i < len(l_half) and j < len(r_half):
+                if l_half[i] <= r_half[j]:
+                    nums[k] = l_half[i]
+                    i += 1
+                else:
+                    nums[k] = r_half[j]
+                    j += 1
+                k += 1
+
+            # Ajout des éléments restants de la première moitié.
+            while i < len(l_half):
+                nums[k] = l_half[i]
+                i += 1
+                k += 1
+
+            # Ajout des éléments restants de la deuxième moitié.
+            while j < len(r_half):
+                nums[k] = r_half[j]
+                j += 1
+                k += 1
+            
+            # Déplacement du pointeur de gauche de deux fois la largeur.
+            l += 2 * width
+        
+        # Doublement de la largeur pour la prochaine subdivision.
+        width *= 2
+    
+    # Le plus petit élément après la rotation est le premier élément de la liste nums.
+    return nums[0]
+
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>

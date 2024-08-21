@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>queue </title>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+
+    <link rel="stylesheet" href="../../nav.css">
+</head>
+
+
+<body>
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="../../complexity/complexity.html">complexite</a>
+        <a href="../liste/liste.html">liste</a>
+        <a href="../set/set.html">set</a>
+        <a href="../dictionner/dictionner.html">dictionner</a>
+        <a href="../tuple/tuple.html">tuple</a>
+        <a href="../stack/stack.html">stack</a>
+        <a class="active">queue</a>
+        <a href="../str/str.html">str</a>
+        <a href="../diff des complexite/diff des complexite.html">difference entre eux</a>
+        <a href="../../mot cle/motcle.html">mots cle</a>
+        <a href="../../utils/utils.html">fonctions utiles</a>
+      </div>
+
+
+
+
+    <h1>queue</h1>
+
+    <p>Queue works on the principle of “First-in, first-out”.
+     Below is list implementation of queue. We use pop(0) to remove the first item from a list.</p>
+   <pre>
+       <code>
+        # Python code to demonstrate Implementing  
+        # Queue using list 
+        queue = ["Amar", "Akbar", "Anthony"] 
+        queue.append("Ram") 
+        queue.append("Iqbal") 
+        print(queue) # ['Amar', 'Akbar', 'Anthony', 'Ram', 'Iqbal']
+        
+        # Removes the first item 
+        print(queue.pop(0)) #Amar
+        
+        print(queue) # ['Akbar', 'Anthony', 'Ram', 'Iqbal']
+        
+        # Removes the first item 
+        print(queue.pop(0)) # Akbar
+        
+        print(queue) # ['Anthony', 'Ram', 'Iqbal']
+       </code>
+       </pre>
+<h3>Deque</h3>
+       <p>In case of stack, list implementation works fine and provides both append() and pop() in O(1) time.
+         When we use deque implementation, we get same time complexity.</p>
+<pre>
+    <code>
+        
+
+# Python code to demonstrate Implementing  
+# Stack using deque 
+from collections import deque 
+queue = deque(["Ram", "Tarun", "Asif", "John"]) 
+print(queue) 
+queue.append("Akbar") 
+print(queue) 
+queue.append("Birbal") 
+print(queue) 
+print(queue.pop())                  
+print(queue.pop())                  
+print(queue) 
+    </code>
+</pre>
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+       <script>hljs.highlightAll();</script>
+   
+   </body>
+
+   
+
+
+
+
+  
+
+
+

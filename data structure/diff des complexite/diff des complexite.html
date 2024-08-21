@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>difference </title>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../../nav.css">
+
+
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="../../complexity/complexity.html">complexite</a>
+        <a href="../liste/liste.html">liste</a>
+        <a href="../set/set.html">set</a>
+        <a href="../dictionner/dictionner.html">dictionner</a>
+        <a href="../tuple/tuple.html">tuple</a>
+        <a href="../stack/stack.html">stack</a>
+        <a href="../queue/queue.html">queue</a>
+        <a href="../str/str.html">str</a>
+        <a class="active">difference entre eux</a>
+        <a href="../../mot cle/motcle.html">mots cle</a>
+        <a href="../../utils/utils.html">fonctions utiles</a>
+      </div>
+
+
+    <h1>la différence de la complexite entre les (string,liste,set,dict)</h1>
+
+    <h3>Complexité des opérations sur les string (str)</h3>
+    <ul>
+        <li>in: O(n * m), où n est la longueur de la chaîne principale et m est la longueur de la sous-chaîne.</li>
+        <li>len(): O(1)</li>
+        <li>index(), find(): O(n), où n est la longueur de la chaîne.</li>
+        <li>count(): O(n), où n est la longueur de la chaîne.</li>
+        <li>replace(): O(n + k * m), où n est la longueur de la chaîne, m est la longueur de l'ancienne sous-chaîne, et
+            k est le nombre de remplacements.</li>
+        <li>split(): O(n), où n est la longueur de la chaîne.</li>
+        <li>join(): O(n), où n est la somme des longueurs des chaînes dans l'itérable.</li>
+        <li>upper(), lower(), capitalize(): O(n), où n est la longueur de la chaîne.</li>
+        <li>strip(), lstrip(), rstrip(): O(n), où n est la longueur de la chaîne.</li>
+
+    </ul>
+
+    <h3>Complexité des opérations sur les listes (list)</h3>
+    <ul>
+        <li>in: O(n), où n est la longueur de la liste.</li>
+        <li>len(): O(1)</li>
+        <li>append(): O(1) amorti</li>
+        <li>extend(): O(k), où k est le nombre d'éléments ajoutés.</li>
+        <li>insert(): O(n) dans le pire des cas, où n est la longueur de la liste.</li>
+        <li>remove(): O(n), où n est la longueur de la liste.</li>
+        <li>pop(): O(1) (si à la fin de la liste) ou O(n) (si à un index spécifique).</li>
+        <li>index (): O(n), où n est la longueur de la liste.</li>
+        <li>count(): O(n), où n est la longueur de la liste.</li>
+        <li>sort(): O(n log n), où n est la longueur de la liste.</li>
+        <li>reverse(): O(n), où n est la longueur de la liste.</li>
+        <li>copy(): O(n), où n est la longueur de la liste.</li>
+        <li>clear(): O(n), où n est la longueur de la liste.</li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3>Complexité des opérations sur les ensembles (set)</h3>
+    <ul>
+        <li>in: O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>len(): O(1)</li>
+        <li>add(): O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>remove(): O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>discard(): O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>pop(): O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>clear(): O(n), où n est la taille de l'ensemble.</li>
+        <li>copy(): O(n), où n est la taille de l'ensemble.</li>
+        <li>union(): O(len(s) + len(t)), où s et t sont les tailles des ensembles.</li>
+        <li>intersection(): O(min(len(s), len(t))), où s et t sont les tailles des ensembles.</li>
+        <li>difference(): O(len(s)), où s est la taille de l'ensemble.</li>
+        <li>symmetric_difference(): O(len(s) + len(t)), où s et t sont les tailles des ensembles.</li>
+    </ul>
+
+
+
+
+    <h3>Complexité des opérations sur les dictionnaires (dict)</h3>
+    <ul>
+        <li>#in: O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <h4>Note : on peut dire que dans tous les exercice la complexite de l'opération in est O(1) </h4>
+        <h4>pour plus d'information lire sur <a href="#aa">Hash table algorithme</a></h4>
+        <li>len(): O(1)</li>
+        <li>get(): O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>setdefault(): O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>keys(): O(1)</li>
+        <li>values(): O(1)</li>
+        <li>items(): O(1)</li>
+        <li>update(): O(len(M)), où M est la mise à jour effectuée.</li>
+        <li>clear(): O(n), où n est la taille du dictionnaire.</li>
+        <li>pop(): O(1) en moyenne, O(n) dans le pire des cas.</li>
+        <li>popitem(): O(1)</li>
+        <li>copy(): O(n), où n est la taille du dictionnaire.</li>
+    </ul>
+
+    <h5>on peut conclure </h5>
+    <p>si on utilisant "in" dans une liste = O(n) </p>
+    <p>si on utilisant "in" dans une set ou dictionner = O(1) </p>
+
+
+<h2>Hash table algorithme</h2>
+
+    <pre id="aa">
+        <code>
+            # Define the size of the hash table
+            SIZE = 10
+            
+            # Initialize the hash table with empty lists for chaining
+            hash_table = [[] for _ in range(SIZE)]
+            
+            # Hash function to compute the index
+            def hash_function(key):
+                return hash(key) % SIZE
+            
+            # Function to insert a key-value pair into the hash table
+            def insert(key, value):
+                index = hash_function(key)
+                # Check if the key already exists, if so, update the value
+                for i, kv in enumerate(hash_table[index]):
+                    k, v = kv
+                    if k == key:
+                        hash_table[index][i] = (key, value)
+                        return
+                # If the key doesn't exist, append the new key-value pair
+                hash_table[index].append((key, value))
+            
+            # Function to search for a value by its key
+            def search(key):
+                index = hash_function(key)
+                for k, v in hash_table[index]:
+                    if k == key:
+                        return v
+                return None
+            
+            # Function to delete a key-value pair from the hash table
+            def delete(key):
+                index = hash_function(key)
+                for i, kv in enumerate(hash_table[index]):
+                    k, v = kv
+                    if k == key:
+                        del hash_table[index][i]
+                        return True
+                return False
+            
+            # Example usage
+            insert("apple", 5)
+            insert("banana", 7)
+            
+            print(search("apple"))  # Output: 5
+            print(search("banana"))  # Output: 7
+            
+            delete("apple")
+            print(search("apple"))  # Output: None
+             </code>
+    </pre>
+
+
+
+
+<table>
+    <tr><th>data structure</th>
+        <th>liste</th>
+        <th>set</th>
+        <th>dictionnery</th>
+        <th>Stack</th>
+        <th>Queue</th>
+        <th>Tuple</th>
+        <th>String</th>
+    </tr>
+
+    <tr>
+        <th>Access</th>
+        <td>O(1)</td>
+        <td></td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+        <td>O(n)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        </tr>
+
+    <tr>
+        <th>Search	</th>
+        <td>O(n)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+        <td>O(n)</td>
+        <td>O(n)</td>
+        <td>O(n)</td>
+        </tr>
+    <tr>
+        <th>Insertion</th>
+        <td><p>append()=O(1)</p>
+            <p>insert()=O(n)</p>
+        </td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+        <td>O(n)</td>
+    </tr>
+
+    <tr>
+        <th>Deletion</th>
+        <td><p>remove()=O(n)</p>
+            <p>pop(index)=O(n)</p>
+            <p>pop()=O(1)</p>
+        </td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+access
+    Lists: Access elements using indices. Example: my_list[0].
+    Sets: No direct access by index. Check membership instead. Example: 30 in my_set.
+    Dictionaries: Access values using keys. Example: my_dict['b'].
+    
+    
+Search
+    Lists: Search using membership check or iteration. Example: element in my_list. Time Complexity: O(n).
+    Sets: Efficient membership check. Example: element in my_set. Time Complexity: O(1) on average.
+    Dictionaries: Efficient key search. Example: key in my_dict. Time Complexity: O(1) on average for keys, O(n) for values.
+
+Insertion
+    Lists: Insert using append() for adding at the end or insert() for adding at a specific index.
+
+    Example: my_list.append(40), my_list.insert(1, 15)
+    Time Complexity: O(1) for append(), O(n) for insert(index, element)
+    Sets: Insert using add(). Sets do not allow duplicate elements.
+    
+    Example: my_set.add(40)
+    Time Complexity: O(1) on average
+    Dictionaries: Insert or update key-value pairs using the assignment operator.
+    
+    Example: my_dict['c'] = 30
+    Time Complexity: O(1) on average
+
+Deletion
+    Lists: Delete using remove() to delete by value or pop() to delete by index or from the end.
+
+    Example: my_list.remove(30), my_list.pop(1), my_list.pop()
+    Time Complexity: O(n) for remove(value) and pop(index), O(1) for pop() from the end.
+    Sets: Delete using remove() or discard(). remove() raises an error if the element does not exist, discard() does not.
+
+    Example: my_set.remove(30), my_set.discard(20)
+    Time Complexity: O(1) on average
+    Dictionaries: Delete using the del statement or pop() method.
+
+    Example: del my_dict['b'], my_dict.pop('a')
+    Time Complexity: O(1) on average
+        
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

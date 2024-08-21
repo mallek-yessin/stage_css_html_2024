@@ -1,0 +1,31 @@
+<head>
+<title>Number of 1 Bits</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		
+
+</head>
+
+<body>
+<h1>Number of 1 Bits</h1>
+<p>on a tous les nombres impaires a un bit a 2**0</p>
+<p>quand on fait right shift tous les bits 1 prend le dernier bit</p>
+<pre>
+<code>
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        a=0
+        while n>0:
+            if n%2==1:
+                a=a+1
+            n=n>>1
+        return(a)
+</code>
+</pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>        
+
+</body>

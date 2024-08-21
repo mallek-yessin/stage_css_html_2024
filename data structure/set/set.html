@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>set </title>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+
+    <link rel="stylesheet" href="../../nav.css">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="../../complexity/complexity.html">complexite</a>
+        <a href="../liste/liste.html">liste</a>
+        <a class="active">set</a>
+        <a href="../dictionner/dictionner.html">dictionner</a>
+        <a href="../tuple/tuple.html">tuple</a>
+        <a href="../stack/stack.html">stack</a>
+        <a href="../queue/queue.html">queue</a>
+        <a href="../str/str.html">str</a>
+        <a href="../diff des complexite/diff des complexite.html">difference entre eux</a>
+        <a href="../../mot cle/motcle.html">mots cle</a>
+        <a href="../../utils/utils.html">fonctions utiles</a>
+      </div>
+
+      
+    <h1>set</h1>
+    <h3>Il y a des fonctions près définie sont:</h3>
+    <p> add(), remove(), discard(), union(), intersection(), difference()
+    </p>
+    <h2>a)add()</h2>
+    <p>Ajoute un élément à l'ensemble. Si l'élément existe déjà, il n'y a aucun effet</p>
+
+    <pre>
+        <code>
+            my_set = {1, 2, 3}
+            my_set.add(4)
+            print(my_set)  # {1, 2, 3, 4}
+            
+            my_set.add(2)  # L'élément 2 existe déjà, donc l'ensemble ne change pas
+            print(my_set)  # {1, 2, 3, 4}
+            
+
+        </code>
+   </pre>
+
+
+
+    <h2>b) remove()</h2>
+    <p>Supprime un élément de l'ensemble. Si l'élément n'existe pas, une erreur KeyError est levée.</p>
+
+    <pre>
+           <code>
+            my_set = {1, 2, 3}
+            my_set.remove(2)
+            print(my_set)  # {1, 3}
+            
+            try:
+                my_set.remove(5)  # L'élément 5 n'existe pas, donc une KeyError est levée
+            except KeyError:
+                print("L'élément 5 n'existe pas dans l'ensemble.")
+            
+            
+   
+           </code>
+      </pre>
+
+
+
+
+
+
+    <h2>c)discard()</h2>
+    <p>Supprime un élément de l'ensemble. Si l'élément n'existe pas, il n'y a aucun effet (pas d'erreur levée).</p>
+
+    <pre>
+              <code>
+                my_set = {1, 2, 3}
+                my_set.discard(2)
+                print(my_set)  # {1, 3}
+                
+                my_set.discard(5)  # L'élément 5 n'existe pas, donc l'ensemble ne change pas
+                print(my_set)  # {1, 3}
+                
+                
+      
+              </code>
+         </pre>
+
+
+
+    <p>SSi vous préférez éviter les erreurs et ne pas avoir à gérer les cas où un élément n'existe pas dans l'ensemble,
+        alors oui, discard() est une option plus sûre que remove(). En utilisant discard(), vous pouvez supprimer un
+        élément sans vous soucier de sa présence, car aucune erreur n'est levée si l'élément n'est pas trouvé. Cela rend
+        votre code plus robuste, en particulier si vous ne pouvez pas garantir la présence de l'élément à chaque fois.
+    </p>
+    <p>Cependant, si vous avez besoin d'être informé lorsqu'un élément que vous essayez de supprimer n'est pas présent
+        dans l'ensemble, alors remove() est plus approprié, car il lèvera une exception KeyError dans ce cas. Cela peut
+        être utile si vous souhaitez être averti d'un problème potentiel dans votre logique de programme.</p>
+    <p>En résumé, si vous ne voulez pas gérer les erreurs et préférez une approche plus tolérante envers les cas où
+        l'élément n'existe pas, continuez à utiliser discard(). Si vous avez besoin d'une confirmation explicite de la
+        présence de l'élément avant de le supprimer, alors remove() peut être plus adapté.</p>
+
+
+
+
+
+
+    <h2>d) remove()</h2>
+    <p>Supprime la première occurrence d'un élément spécifié.</p>
+
+    <pre>
+                 <code>
+                    my_list = [1, 2, 3, 2, 4]
+                    my_list.remove(2)
+                    print(my_list)  # [1, 3, 2, 4]
+                    
+                     
+         
+                 </code>
+            </pre>
+
+
+
+
+
+    <h2>e) pop()</h2>
+    <p>Supprime et retourne l'élément à une position spécifiée (par défaut, le dernier élément).</p>
+
+    <pre>
+                    <code>
+                        my_list = [1, 2, 3]
+                        popped_element = my_list.pop()
+                        print(popped_element)  # 3
+                        print(my_list)         # [1, 2]
+                        
+                        popped_element = my_list.pop(0)
+                        print(popped_element)  # 1
+                        print(my_list)         # [2]
+                        
+                    </code>
+               </pre>
+
+
+
+
+    <h2>g)reverse()</h2>
+    <p>Inverse l'ordre des éléments de la liste.</p>
+
+    <pre>
+                       <code>
+                        my_list = [1, 2, 3]
+                        my_list.reverse()
+                        print(my_list)  # [3, 2, 1]
+                        
+                          
+                           
+               
+                       </code>
+                  </pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
