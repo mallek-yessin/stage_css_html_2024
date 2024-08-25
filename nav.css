@@ -21,3 +21,41 @@
     background-color: #04AA6D;
     color: white;
   }
+
+  .footer {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 40px;
+    background-color: red;
+    color: white;
+    text-align: center;
+ }
+
+
+
+
+
+
+
+
+
+
+
+  .styled {
+    height:5cm;
+    border: 2;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+
+  }
+  
+
+  
+
