@@ -43,29 +43,79 @@
       </li>
     </ul>
 
-    
-<div style="background-color: aquamarine;">
 
-  <h3>nombre premier</h3>
-  <pre id="nombre premier">
+
+
+    <div style="background-color: aquamarine;">
+
+      <h3>nombre premier</h3>
+      <pre id="nombre premier">
+    <div class="row">
+      <div>
+        <div style="text-align: center">n1</div>
+        <pre>
     <code>
-      
-      
-      def est_premier(n):
-      if n <= 1:
-      return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-        for i in range(3, int(n**0.5) + 1, 2):
-        if n % i == 0:
-        return False
-        return True
+      def test_prime(x):
+      """Check if x is prime using the primes list (O(log(N)) complexity)."""
+      for p in primes:
+          if p * p > x:
+              break
+          if x % p == 0:
+              return False
+      return True
+  
+  def test_prime_2(x):
+      """Check if x is prime using O(sqrt(N)) complexity."""
+      for i in range(2, int(x ** 0.5) + 1):
+          if x % i == 0:
+              return False
+      return True
+    </code>
+</pre>
+      </div>
+
+<div>
+      <div style="text-align: center">tous les nb premier &lt; 10^12</div>
+      <pre>
+  <code>
+    N = 1000  # Enough to test primes up to 10^12
+    primes = []
+    composite = [False] * N  # Initialize all as non-composite (prime)
+
+    
+        """Use the sieve to find all primes below N (O(N log(log(N))) complexity)."""
+    composite[0] = composite[1] = True  # Mark 0 and 1 as composite (not prime)
         
-      </code>
-    </pre>
+    for i in range(2, int(N ** 0.5) + 1):  # Iterate up to sqrt(N)
+            if composite[i]:
+                continue
+            for j in range(i * i, N, i):  # Mark multiples of i as composite
+                composite[j] = True
+    for i in range(2, N):
+            if not composite[i]:
+                primes.append(i)
+    
+    
+        
+        # Print all primes found
+    for p in primes:
+            print(p)
+    
+    
+    
+  </code>
+</pre>
+    </div>
   </div>
+    </div>
+  </div>
+
+
+
+
+
+
+    
 
     
 
@@ -170,47 +220,71 @@
 
       <pre>
       <code>
-        MOD = 1000000007
- 
-        def multiply(F, U):
-            res = [[0, 0], [0, 0]]
-            res[0][0] = (F[0][0] * U[0][0] + F[0][1] * U[1][0]) % MOD
-            res[0][1] = (F[0][0] * U[0][1] + F[0][1] * U[1][1]) % MOD
-            res[1][0] = (F[1][0] * U[0][0] + F[1][1] * U[1][0]) % MOD
-            res[1][1] = (F[1][0] * U[0][1] + F[1][1] * U[1][1]) % MOD
-            return res
-         
-         
-        def power(F, n):
-            # Base transformation matrix
-            result = [[1, 0], [0, 1]]  # Identity matrix
-            base = F
-         
-            while n:
-                if n % 2 == 1:
-                    result = multiply(result, base)
-                base = multiply(base, base)
-                n //= 2
-         
-            return result
-         
-        def fibonacci(n):
-            if n == 0:
-                return 0
-            if n == 1:
-                return 1
-            
-            F = [[1, 1], [1, 0]]
-            result = power(F, n - 1)
-            
-            return result[0][0]
-         
-        # Input and output
-        n = int(input())
-        print(fibonacci(n))
+        def produit(A,B):
+    m=10**9+7
+    return [
+        [
+            (A[0][0] * B[0][0] + A[0][1] * B[1][0])%m,
+            (A[0][0] * B[0][1] + A[0][1] * B[1][1])%m
+        ],
+        [
+            (A[1][0] * B[0][0] + A[1][1] * B[1][0])%m,
+            (A[1][0] * B[0][1] + A[1][1] * B[1][1])%m
+        ]
+    ]
+
+
+def fibonnacci(n:int):
+    F=[[1,1],[1,0]]
+    R=[[1,0],[0,1]]
+    while n>0:
+        if n%2==1:
+            R=produit(R,F)
+        F=produit(F,F)
+        n=n//2
+    print( R[1][0]%(10**9+7))
+fibonnacci(int(input()))
       </code>
 
-  </pre>
+      on a f(1)=[[1,1],[1,0]]=[[f(2),f(1)],[f(1),f(0)]]
+      r=[[1,0],[0,1]]  l'identite
+      produit de 2 matrices
+      <img src="./img/matrix.png" alt="">
+
+      F=[[1,1],[1,0]]
+      R=[[1,0],[0,1]]
+      n=11
+      n>0=>11%2=1=>R=F*R=F
+      F=F^2=>n//2=5
+
+      
+      F=[[1,1],[1,0]]
+      R=[[1,1],[1,0]]
+      n=5
+      n>0=>5%2=1=>R=F*R=[[1,1],[1,0]]^3
+      F=[[1,1],[1,0]]^4=>n//2=2
+      
+      
+      
+      F=[[1,1],[1,0]]^4
+      R=[[1,1],[1,0]]^3
+      n=2
+      n>0=>2%2=0
+      F=[[1,1],[1,0]]^8=>n//2=1
+
+
+
+      
+      F=[[1,1],[1,0]]^8
+      R=[[1,1],[1,0]]^3
+      n=1
+      n>0=>1%2=1=>R=F*R=[[1,1],[1,0]]^11
+      F=[[1,1],[1,0]]^16=>n//2=0
+
+      R[1][0]est le fib de 11
+
+
+    </pre>
     </div>
   </div>
 
@@ -260,21 +334,6 @@
 </pre>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
   </div>
@@ -327,6 +386,61 @@
 
   </div>
 
+
+
+
+
+  <div style="background-color: salmon;">
+    <h3 id="sort">puissance</h3>
+
+    <div>
+      <h4>puissance log(y)</h4>
+
+      <pre>
+        <code>
+          def fast_power_recursive(x, y, m):
+          # Calculate (x ^ y) % m using recursion
+          if y == 0:
+              return 1
+          p = fast_power_recursive(x, y // 2, m)  # half the exponent
+          ans = (p * p) % m
+          if y % 2 == 1:  # if exponent is odd
+              ans = (ans * x) % m
+          return ans
+      
+      def fast_power_loop(x, y, m):
+          # Calculate (x ^ y) % m using a loop
+          ans = 1
+          p = x  # x raised to powers of 2 (1, 2, 4, 8, ...)
+          while y > 0:
+              if y % 2 == 1:
+                  ans = (ans * p) % m
+              p = (p * p) % m
+              y //= 2  # divide y by 2
+          return ans
+      
+      # Main part to test the functions
+      if __name__ == "__main__":
+          x = 5
+          y = 15
+          m = 10000
+      
+          print(f"(x ^ y) % m = {fast_power_recursive(x, y, m)} ; using fast power (recursive)")
+          print(f"(x ^ y) % m = {fast_power_loop(x, y, m)} ; using fast power (loop)")
+      
+</code>
+</pre>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
     <script>
       hljs.highlightAll();
@@ -335,6 +449,143 @@
 
 <div class="footer">
   <a href="../home.html">home</a>
+</div>
+
+
+
+<div style="background-color: cyan;">
+  <h3>modulo</h3>
+
+  <pre id="modulo">
+  <code>
+    import math
+
+    def GCD(a, b):
+        return math.gcd(a, b)
+    def phi(m):
+    """Computes Euler's Totient function φ(m)."""
+    result = m
+    p = 2
+    while p * p <= m:
+        # Check if p divides m
+        if m % p == 0:
+            # Divide out all occurrences of p from m
+            while m % p == 0:
+                m //= p
+            result -= result // p
+        p += 1
+    # If m is still greater than 1, it's prime
+    if m > 1:
+        result -= result // m
+    return result
+
+
+def mod_exp_with_phi(a, x, m):
+    phi_m = phi(m)
+    # Reduce exponent modulo phi(m)
+    reduced_exponent = x % phi_m
+    return mod_exp(a, reduced_exponent, m)
+
+def mod_exp(a, x, m):
+    result = 1
+    a = a % m
+    while x > 0:
+        if x % 2 == 1:
+            result = (result * a) % m
+        x = x // 2
+        a = (a * a) % m
+    return result
+
+# Example usage
+a = 7
+x = 100
+m = 13
+if GCD(m,x)==1:
+  print(f"phi({m}) =", phi(m))  # Output: 12
+  print(f"({a}^{x}) % {m} =", mod_exp_with_phi(a, x, m))  # Output: 9
+
+
+
+  </code>
+our problem is :
+
+a^x % m (but x is verry big)
+
+solution : Euler’s Theorem
+
+<h4>If a and m are coprime (i.e., gcd(a,m)=1), Euler’s theorem states:</h4>
+<img src="./img/Euler’s Theorem.png" alt="">
+
+==> in python ==> (a ^phi(m)) % m = 1
+
+how to calculate phi(m) ?
+
+
+<h2>solution :  Totient Function φ(m)</h2>
+p1, p2, p3 .... sont des prime factors of  m
+
+==> 
+<img src="./img/Capture d'écran 2024-10-13 232822.png" alt="">
+
+ϕ(m)=m×(1− 1/p1)×(1− 1/p2)×…
+
+
+
+<h1>en commance:</h1>
+m×(1− 1/p1) ==> (m− m/p1) ==> K
+
+
+ϕ(m)=k ×(1− 1/p2)×…
+
+
+k×(1− 1/p2) ==> (k− k/p2) 
+
+
+p1 et p2 are the distinct prime factors of  m
+
+==>dans le code (python) on peu ecrire (1− 1//p1) a la place de (1− 1/p1) 
+
+<h3>modulo prime number</h3>
+
+<code>
+  import math
+
+  def pgcd(a, b):
+      return math.gcd(a, b)
+  def mod_exp_with_phi(a, x, m):
+      # no need for phi phi_m = phi(m)
+      phi_m = m-1 # if m is prime
+      # Reduce exponent modulo phi(m)
+      reduced_exponent = x % phi_m
+      return mod_exp(a, reduced_exponent, m)
+  
+  def mod_exp(a, x, m):
+      result = 1
+      a = a % m
+      while x > 0:
+          if x % 2 == 1:
+              result = (result * a) % m
+          x = x // 2
+          a = (a * a) % m
+      return result
+  a = 7
+  x = 100
+  m = 13
+  if GCD(m,x)==1:
+      print(f"phi({m}) =", phi(m)) 
+      print(f"({a}^{x}) % {m} =", mod_exp_with_phi(a, x, m))
+  
+  
+    </code>
+
+
+<h4>Note:</h4> if m is prime number and gcd(a,m)=1 
+video 16 : 16:30 ==> (a^x) % m = ((a% m )^(x% m-1)) % m 
+
+==> no need to calculate phi 
+
+
+</pre>
 </div>
 
 
