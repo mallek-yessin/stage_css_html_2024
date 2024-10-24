@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DFS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"
+    />
+  </head>
+
+
+  <body>
+    
+
+<h2>BFS (Breadth-First Search)</h2>
+
+<h4>Comment fonctionne BFS ?</h4>
+<pre>
+<p>L'idée de base est :
+
+1.On commence à partir d'un nœud de départ (source).
+2.On visite tous ses voisins immédiats.
+3.Une fois que tous les voisins du premier nœud sont visités, on passe aux voisins des voisins, et ainsi de suite.
+4.Ce processus continue niveau par niveau, jusqu'à ce que tous les nœuds accessibles soient visités.
+</p>
+</pre>
+<h3></h3>
+
+
+
+         <div><h4>Pseudocode de BFS (itératif avec une file)</h4></div>
+         <pre>
+     <code>
+      from collections import deque
+
+      def bfs(nœud):
+          file = deque([nœud])  # Créer une file avec le nœud de départ
+          visité = set([nœud])  # Marquer le nœud comme visité
+      
+          while file:
+              courant = file.popleft()  # Enlever le premier élément de la file
+              print(courant)  # Affiche ou utilise le nœud
+      
+              # Ajouter les voisins non visités à la file
+              for voisin in graphe[courant]:
+                  if voisin not in visité:
+                      visité.add(voisin)
+                      file.append(voisin)
+      
+     </code>
+ </pre>
+       </div>
+
+
+
+
+       
+
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+       <script>
+         hljs.highlightAll();
+       </script>
+
+</body>

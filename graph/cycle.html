@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DFS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"
+    />
+  </head>
+
+
+  <body>
+    
+<a href="https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1">problem</a>
+<h2>cycle</h2>
+
+
+         <pre>
+     <code>
+
+
+
+# A Python Program to detect
+# cycle in an undirected graph
+
+def is_cyclic_util(v, adj, visited, parent):
+  
+    # Mark the current node as visited
+    visited[v] = True
+
+    # Recur for all the vertices
+    # adjacent to this vertex
+    for i in adj[v]:
+      
+        # If an adjacent vertex is not visited,
+        # then recur for that adjacent
+        if not visited[i]:
+            if is_cyclic_util(i, adj, visited, v):
+                return True
+              
+        # If an adjacent vertex is visited and
+        # is not parent of current vertex,
+        # then there exists a cycle in the graph.
+        elif i != parent:
+            return True
+
+    return False
+
+def is_cyclic(V, adj):
+  
+    # Mark all the vertices as not visited
+    visited = [False] * V
+
+    # Call the recursive helper function
+    # to detect cycle in different DFS trees
+    for u in range(V):
+      
+        # Don't recur for u if it is already visited
+        if not visited[u]:
+            if is_cyclic_util(u, adj, visited, -1):
+                return True
+
+    return False
+
+# Driver program to test above functions
+if __name__ == "__main__":
+    V = 3
+    adj = [[] for _ in range(V)]
+
+    adj[1].append(0)
+    adj[0].append(1)
+    adj[0].append(2)
+    adj[2].append(0)
+    adj[1].append(2)
+    adj[2].append(1)
+
+    print("Contains cycle" if is_cyclic(V, adj) else "No Cycle")
+
+    V = 3
+    adj2 = [[] for _ in range(V)]
+
+    adj2[0].append(1)
+    adj2[1].append(0)
+    adj2[1].append(2)
+    adj2[2].append(1)
+
+    print("Contains Cycle" if is_cyclic(V, adj2) else "No Cycle")
+
+         
+</code>
+</pre>
+      </div>
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+      <script>
+        hljs.highlightAll();
+      </script>
+
+</body>

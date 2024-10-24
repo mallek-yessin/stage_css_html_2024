@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DFS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"
+    />
+  </head>
+
+
+  <body>
+    
+  
+
+<h2>La DFS (Depth-First Search)</h2>
+
+<h4>Comment fonctionne DFS ?</h4>
+<pre>
+<p>L'idée de base est la suivante :
+
+1.On commence au nœud de départ. <br>
+2.On explore l'un de ses voisins.<br>
+3.On continue à explorer un chemin en profondeur tant qu'il y a des nœuds non visités.<br>
+4.Quand on atteint un nœud sans voisins non visités, on remonte (backtracking) et continue l’exploration sur d'autres chemins.<br>
+DFS peut être implémenté de manière récursive ou avec une pile.
+</p>
+</pre>
+<h3></h3>
+
+
+
+
+         
+           <div><h4>Pseudocode de DFS (version récursive)</h4></div>
+           <pre>
+       <code>
+         def dfs(nœud, visité):
+         # Marquer le nœud comme visité
+         visité.add(nœud)
+         print(nœud)  # Affiche ou utilise le nœud
+     
+         # Explorer tous les voisins non visités
+         for voisin in graphe[nœud]:
+             if voisin not in visité:
+                 dfs(voisin, visité)
+       </code>
+   </pre>
+         </div>
+
+
+         <div><h4>Implémentation avec une pile (version itérative)</h4></div>
+         <pre>
+     <code>
+       def dfs_iteratif(nœud):
+           pile = [nœud]
+           visité = set()
+       
+           while pile:
+               courant = pile.pop()  # Récupérer le nœud au sommet de la pile
+               if courant not in visité:
+                   print(courant)  # Affiche ou utilise le nœud
+                   visité.add(courant)
+       
+                   # Ajouter les voisins non visités à la pile
+                   for voisin in graphe[courant]:
+                       if voisin not in visité:
+                           pile.append(voisin)
+     </code>
+ </pre>
+       </div>
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+       <script>
+         hljs.highlightAll();
+       </script>
+
+</body>
