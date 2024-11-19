@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>graph representation</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css" />
+</head>
+
+
+<body>
+    <h1>graph representation</h1>
+    <img style="width: 90%" src="./type de graphe.png" alt="" />
+
+    <div style="display: flex; justify-content: space-between;">
+
+
+        <div>
+            <h4>Edge List</h4>
+            <pre>
+            <code>
+            edge_list = [
+            (0, 1),
+            (0, 2),
+            (1, 2),
+            (2, 0),
+            (2, 3)
+            ]
+            print("Edge List:", edge_list)
+            </code>
+</pre>
+        </div>
+
+        <div>
+            <h4>Adjacency Matrix</h4>
+            <pre>
+        <code>
+        num_vertices = 4  # Number of vertices (0, 1, 2, 3)
+        adj_matrix = [[0] * num_vertices for _ in range(num_vertices)]
+        
+        # Populate the matrix based on the edges
+        for u, v in edge_list:
+            adj_matrix[u][v] = 1
+        
+        print("Adjacency Matrix:")
+        for row in adj_matrix:
+            print(row)
+        </code>
+    </pre>
+        </div>
+
+
+        <div>
+            <h4>Adjacency List</h4>
+            <pre>
+<code>
+    # Adjacency List Representation
+    adj_list = {i: [] for i in range(num_vertices)}
+    
+    # Populate the adjacency list based on the edges
+    for u, v in edge_list:
+        adj_list[u].append(v)
+    
+    print("Adjacency List:")
+    for vertex, neighbors in adj_list.items():
+        print(f"{vertex}: {neighbors}")
+    
+</code>
+</pre>
+        </div>
+
+    </div>
+
+    <h1>complete graph</h1>
+    <img style="width: 90%" src="./complete graph.png" alt="">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+
+</body>
