@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DFS</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"
-    />
-  </head>
+
+<head>
+  <title>DFS</title>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css" />
+</head>
 
 
-  <body>
-    
-  
+<body>
 
-<h2>La DFS (Depth-First Search)</h2>
 
-<h4>Comment fonctionne DFS ?</h4>
-<pre>
+
+  <h2>La DFS (Depth-First Search)</h2>
+
+  <h4>Comment fonctionne DFS ?</h4>
+  <pre>
 <p>L'idée de base est la suivante :
 
 1.On commence au nœud de départ. <br>
@@ -26,31 +25,77 @@
 DFS peut être implémenté de manière récursive ou avec une pile.
 </p>
 </pre>
-<h3></h3>
+  <h3></h3>
+
+
+<a href="https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1">le problem de dfs dans geeksforgeeks</a><br>
+
+<a href="./geegs dfs.pdf">le problem en pdf</a>
+
+<h4>le solution</h4>
+<div>
+<pre>
+     <code>
+
+      #User function Template for python3
+
+      class Solution:
+          visited=[False]*10000
+          answer=[]
+          
+          def dfs(self,adj , k):
+              self.answer.append(k)
+              self.visited[k]=True
+              for i in (adj[k]):
+                  if self.visited[i]==False:
+                      self.dfs(adj , i)
+              
+          #Function to return a list containing the DFS traversal of the graph.
+          def dfsOfGraph(self, adj):
+              self.visited=[False]*10000
+              self.answer=[]
+              self.dfs(adj,0)
+              return self.answer
+              
+      
+  
+  # Driver Code Starts
+  if __name__ == '__main__':
+      T = int(input())
+      while T > 0:
+          V, E = map(int, input().split())
+          # Create adjacency list with V vertices
+          adj = [[] for _ in range(V)]  # List of lists (vector of vectors equivalent)
+  
+          # Reading edges
+          for i in range(E):
+              u, v = map(int, input().split())
+              adj[u].append(v)
+              adj[v].append(u)
+  
+          # Create an object of Solution class
+          ob = Solution()
+          ans = ob.dfsOfGraph(adj)
+  
+          # Printing the result
+          print(" ".join(map(str, ans)))
+          T -= 1
+  
+     </code>
+ </pre>
+</div>
 
 
 
 
-         
-           <div><h4>Pseudocode de DFS (version récursive)</h4></div>
-           <pre>
-       <code>
-         def dfs(nœud, visité):
-         # Marquer le nœud comme visité
-         visité.add(nœud)
-         print(nœud)  # Affiche ou utilise le nœud
-     
-         # Explorer tous les voisins non visités
-         for voisin in graphe[nœud]:
-             if voisin not in visité:
-                 dfs(voisin, visité)
-       </code>
-   </pre>
-         </div>
+<h1> NOTE !!! </h1>
 
 
-         <div><h4>Implémentation avec une pile (version itérative)</h4></div>
-         <pre>
+
+  <div>
+    <h4>Implémentation avec une pile (version itérative)</h4>
+  </div>
+  <pre>
      <code>
        def dfs_iteratif(nœud):
            pile = [nœud]
@@ -68,12 +113,265 @@ DFS peut être implémenté de manière récursive ou avec une pile.
                            pile.append(voisin)
      </code>
  </pre>
-       </div>
+  </div>
+ 
+  <h3 id="#1">connected</h3>
+<p>Un graphe connexe est un type de graphe dans lequel il existe un chemin entre chaque paire de sommets</p>
 
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-       <script>
-         hljs.highlightAll();
-       </script>
+  <h4>indirected</h4>
+<p>Pour un graphe non orienté : Le graphe est connexe s'il existe un chemin permettant de voyager entre n'importe quels deux nœuds (sommets) en suivant les arêtes du graphe.
+  
+
+  <div>
+    <pre>
+         <code>
+    
+          #User function Template for python3
+    
+          class Solution:
+              visited=[False]*10000
+              answer=[]
+              
+              def dfs(self,adj , k):
+                  self.answer.append(k)
+                  self.visited[k]=True
+                  for i in (adj[k]):
+                      if self.visited[i]==False:
+                          self.dfs(adj , i)
+                  
+              #Function to return a list containing the DFS traversal of the graph.
+              def dfsOfGraph(self, adj):
+                  self.visited=[False]*10000
+                  self.answer=[]
+                  self.dfs(adj,0)
+                  for i in self.answer:
+                    if self.visited[i]==False:
+                      return "connected"
+                  else return "not connected"
+                  
+          
+      
+      # Driver Code Starts
+      if __name__ == '__main__':
+          T = int(input())
+          while T > 0:
+              V, E = map(int, input().split())
+              # Create adjacency list with V vertices
+              adj = [[] for _ in range(V)]  # List of lists (vector of vectors equivalent)
+      
+              # Reading edges
+              for i in range(E):
+                  u, v = map(int, input().split())
+                  adj[u].append(v)
+                  adj[v].append(u)
+      
+              # Create an object of Solution class
+              ob = Solution()
+              ans = ob.dfsOfGraph(adj)
+      
+              # Printing the result
+              print(" ".join(map(str, ans)))
+              T -= 1
+      
+         </code>
+     </pre>
+    </div>
+    
+
+
+  <h4>directed</h4>
+<p>Pour un graphe orienté : Le graphe est fortement connexe s'il existe un chemin orienté allant de n'importe quel nœud à n'importe quel autre nœud. Si cette condition n'est pas remplie, mais que la version sous-jacente non orientée est connexe, on dit qu'il est faiblement connexe.</p>
+</p>
+
+  <p> visited</p>
+  <h3><a href="#2">A==>B</a></h3>
+
+
+  <div>
+    <pre>
+         <code>
+    
+          #User function Template for python3
+    
+          class Solution:
+              visited=[False]*10000
+              answer=[]
+              
+              def dfs(self,adj , k):
+                  self.answer.append(k)
+                  self.visited[k]=True
+                  for i in (adj[k]):
+                      if self.visited[i]==False:
+                          self.dfs(adj , i)
+                  
+              #Function to return a list containing the DFS traversal of the graph.
+              def dfsOfGraph(self, adj):
+                  self.visited=[False]*10000
+                  self.answer=[]
+                  self.dfs(adj,0)
+                  return self.visited[4]
+                  
+          
+      
+      # Driver Code Starts
+      if __name__ == '__main__':
+          T = int(input())
+          while T > 0:
+              V, E = map(int, input().split())
+              # Create adjacency list with V vertices
+              adj = [[] for _ in range(V)]  # List of lists (vector of vectors equivalent)
+      
+              # Reading edges
+              for i in range(E):
+                  u, v = map(int, input().split())
+                  adj[u].append(v)
+                  adj[v].append(u)
+      
+              # Create an object of Solution class
+              ob = Solution()
+              ans = ob.dfsOfGraph(adj)
+      
+              # Printing the result
+              print(" ".join(map(str, ans)))
+              T -= 1
+      
+         </code>
+     </pre>
+    </div>
+
+
+  <p> visited</p>
+
+
+
+
+
+<h3>Detect a cycle in directed Graph</h3>
+
+  
+
+  <div>
+    <pre>
+         <code>
+    
+          #User function Template for python3
+    
+          class Solution:
+              visited=[False]*10000
+              answer=[]
+              anc=[False]*10000
+              
+              def dfs(self,adj , k):
+                  self.answer.append(k)
+                  self.visited[k]=True
+                  self.anc[k]=True
+                  for i in (adj[k]):
+                      if self.visited[k] and self.anc[k]:
+                          return True
+                      elif self.visited[k]==False and self.dfs(adj,k)
+                  
+              #Function to return a list containing the DFS traversal of the graph.
+              def dfsOfGraph(self, adj):
+                  self.visited=[False]*10000
+                  self.answer=[]
+                  return self.dfs(adj,0)
+                  
+                  
+          
+      
+      # Driver Code Starts
+      if __name__ == '__main__':
+          T = int(input())
+          while T > 0:
+              V, E = map(int, input().split())
+              # Create adjacency list with V vertices
+              adj = [[] for _ in range(V)]  # List of lists (vector of vectors equivalent)
+      
+              # Reading edges
+              for i in range(E):
+                  u, v = map(int, input().split())
+                  adj[u].append(v)
+                  adj[v].append(u)
+      
+              # Create an object of Solution class
+              ob = Solution()
+              ans = ob.dfsOfGraph(adj)
+      
+              # Printing the result
+              print(" ".join(map(str, ans)))
+              T -= 1
+      
+         </code>
+     </pre>
+    </div>
+
+
+
+
+    <h3> Detect a cycle in undirected graph</h3>
+
+  
+
+  <div>
+    <pre>
+         <code>
+    
+          #User function Template for python3
+    
+          class Solution:
+              visited=[False]*10000
+              answer=[]
+              anc=[False]*10000
+              
+              def dfs(self,adj , k,p):
+                  self.answer.append(k)
+                  self.visited[k]=True
+                  self.anc[k]=True
+                  for i in (adj[k]):
+                      if self.visited[k] and k!=p:
+                          return True
+                      elif self.visited[k]==False and self.dfs(adj,k,p)
+                  
+              #Function to return a list containing the DFS traversal of the graph.
+              def dfsOfGraph(self, adj):
+                  self.visited=[False]*10000
+                  self.answer=[]
+                  return self.dfs(adj,0,-1)
+                  
+                  
+          
+      
+      # Driver Code Starts
+      if __name__ == '__main__':
+          T = int(input())
+          while T > 0:
+              V, E = map(int, input().split())
+              # Create adjacency list with V vertices
+              adj = [[] for _ in range(V)]  # List of lists (vector of vectors equivalent)
+      
+              # Reading edges
+              for i in range(E):
+                  u, v = map(int, input().split())
+                  adj[u].append(v)
+                  adj[v].append(u)
+      
+              # Create an object of Solution class
+              ob = Solution()
+              ans = ob.dfsOfGraph(adj)
+      
+              # Printing the result
+              print(" ".join(map(str, ans)))
+              T -= 1
+      
+         </code>
+     </pre>
+    </div>
+    
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
 
 </body>
